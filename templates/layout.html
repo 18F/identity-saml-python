@@ -1,0 +1,16 @@
+<!doctype html>
+<title>Identity</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="{{ url_for('static', filename='basscss.min.css') }}" rel="stylesheet">
+<body class="bg-darken-1">
+  <div class="h5 px2 py1 bg-navy white center">
+    <img src="{{ url_for('static', filename='usa-flag.png') }}">&nbsp;
+    An official website of the United States Government
+  </div>
+  <div class="py2 mb3 bg-white center">
+    <img src="{{ url_for('static', filename='seal.png') }}" class="align-middle" width="100">
+  </div>
+  <div class="container px2">
+    {% block body %}{% endblock %}
+  </div>
+</body>

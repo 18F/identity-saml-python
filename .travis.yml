@@ -1,0 +1,15 @@
+language: python
+
+python:
+  - "2.7"
+
+addons:
+  apt:
+    packages:
+      - libxmlsec1-dev
+      - python-setuptools
+      - python-pkg-resources
+
+install: pip install -r requirements.txt
+
+script: make test

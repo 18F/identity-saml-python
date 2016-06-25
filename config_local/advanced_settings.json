@@ -1,0 +1,7 @@
+{
+  "security": {
+    "logoutRequestSigned": true,
+    "requestedAuthnContext": ["http://idmanagement.gov/ns/assurance/loa/1"]
+  }
+}
+

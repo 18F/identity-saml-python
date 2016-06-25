@@ -1,0 +1,30 @@
+{
+    "strict": true,
+    "debug": true,
+    "sp": {
+        "entityId": "urn:gov:gsa:SAML:2.0.profiles:sp:sso:localhost",
+        "assertionConsumerService": {
+            "url": "http://localhost:4567/consume",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+        },
+        "singleLogoutService": {
+            "url": "http://localhost:4567/logout",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        },
+        "NameIDFormat": "urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified"
+    },
+
+    "idp": {
+        "entityId": "http://localhost:3000/api/saml",
+        "singleSignOnService": {
+            "url": "http://localhost:3000/api/saml/auth",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        },
+        "singleLogoutService": {
+            "url": "http://localhost:3000/api/saml/logout",
+            "binding": "urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect"
+        },
+        "certFingerprint": "8bd5c2e89a2bceb74b9550ba1679052717d1d367",
+        "certFingerprintAlgorithm": "sha1"
+    }
+}
