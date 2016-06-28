@@ -1,0 +1,9 @@
+applications:
+- disk_quota: 512M
+  domain: apps.cloud.gov
+  host: identity-sp-python
+  instances: 1
+  memory: 512M
+  name: identity-sp-python
+  stack: cflinuxfs2
+  buildpack: https://github.com/ddollar/heroku-buildpack-multi.git
