@@ -44,8 +44,8 @@ def index():
 
 @app.route('/login', methods=['POST'])
 def login():
-    '''SAML SSO End-Point
-    '''
+    """SAML SSO End-Point
+    """
     print 'Login recieved'
 
     authn = build_saml_auth()
@@ -61,8 +61,8 @@ def success():
 
 @app.route('/metadata')
 def metadata():
-    '''SAML Metadata End-Point
-    '''
+    """SAML Metadata End-Point
+    """
     auth = build_saml_auth()
     saml_settings = auth.get_settings()
     metadata = saml_settings.get_sp_metadata()
@@ -78,8 +78,8 @@ def metadata():
 
 @app.route('/consume', methods=['POST'])
 def consume():
-    '''SAML ACS End-Point
-    '''
+    """SAML ACS End-Point
+    """
     auth = build_saml_auth()
     auth.process_response()
     errors = auth.get_errors()
