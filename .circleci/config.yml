@@ -1,0 +1,36 @@
+# Ruby CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-ruby/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # Specify the Ruby version you desire here
+      - image: circleci/python:3.6.2
+
+    working_directory: ~/identity-sp-python
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+
+      - run:
+          name: Install dependencies
+          command: |
+            sudo apt-get -y -qq update
+            sudo apt-get -y -qq install libxmlsec1-dev python-setuptools python-pkg-resources
+            sudo pip install -r requirements.txt
+
+      - save_cache:
+          key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+          paths:
+            - "venv"
+      - run:
+          command: |
+            python demosp_test.py
+      - store_artifacts:
+          path: test-reports/
+          destination: tr1
