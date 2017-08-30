@@ -4,15 +4,17 @@ Demo Relying Party based on python and flask
 
 import os
 
-from flask import Flask, render_template, redirect, request, make_response, session
+from flask import (Flask, request, render_template, redirect, session,
+                   make_response)
+from urllib.parse import urlparse
 from onelogin.saml2.auth import OneLogin_Saml2_Auth
-from urlparse import urlparse
+from onelogin.saml2.utils import OneLogin_Saml2_Utils
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
 CONFIG_PATH = os.environ.get('SAML_ENV', 'config')
-print 'Using config from: %s' % CONFIG_PATH
+print('Using config from: %s' % CONFIG_PATH)
 
 
 def build_saml_req():
@@ -46,7 +48,7 @@ def index():
 def login():
     """SAML SSO End-Point
     """
-    print 'Login recieved'
+    print('Login recieved')
 
     authn = build_saml_auth()
     login_url = authn.login()
@@ -68,7 +70,7 @@ def metadata():
     metadata = saml_settings.get_sp_metadata()
     errors = saml_settings.validate_metadata(metadata)
     if errors:
-        print auth.get_last_error_reason()
+        print(auth.get_last_error_reason())
         return make_response(', '.join(errors), 500)
 
     resp = make_response(metadata, 200)
@@ -84,7 +86,7 @@ def consume():
     auth.process_response()
     errors = auth.get_errors()
     if errors:
-        print auth.get_last_error_reason()
+        print(auth.get_last_error_reason())
         return make_response(', '.join(errors), 500)
 
     if not auth.is_authenticated():

@@ -7,7 +7,7 @@ class AppTest(unittest.TestCase):
 
     def test_root(self):
         rv = self.app.get('/')
-        assert 'Please log in to continue' in rv.data
+        assert b'Please log in to continue' in rv.data
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,7 +1,9 @@
 {
   "security": {
+    "authnRequestsSigned": true,
     "logoutRequestSigned": true,
-    "requestedAuthnContext": ["http://idmanagement.gov/ns/assurance/loa/1"]
+    "requestedAuthnContext": ["http://idmanagement.gov/ns/assurance/loa/1"],
+    "signatureAlgorithm": "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256",
+    "digestAlgorithm": "http://www.w3.org/2001/04/xmlenc#sha256"
   }
 }
-
